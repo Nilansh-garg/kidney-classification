@@ -9,7 +9,7 @@ LOGGING_STRING = logging.basicConfig(
     datefmt = "%Y-%m-%d %H:%M:%S"
 )
 
-project_name = "cnn-classifier"
+project_name = "cnnClassifier"
 list_of_files = [
     ".github/workflows/.gitkeep",
     f"src/{project_name}/__init__.py",
