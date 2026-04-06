@@ -76,7 +76,7 @@ class ConfigurationManager:
     def get_validation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
             path_of_model="artifacts/training/model.h5",
-            training_data="artifacts/data_ingestion/kidney-ct-scans-image",
+            training_data="artifacts/data_ingestion/kidney-ct-scan-image",
             mlflow_uri = "https://dagshub.com/Nilansh-garg/kidney-classification.mlflow",
             all_params=self.params,
             params_image_size=self.params.IMAGE_SIZE,

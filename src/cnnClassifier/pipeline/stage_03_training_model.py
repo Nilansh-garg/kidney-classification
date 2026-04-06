@@ -35,7 +35,7 @@ class ModelTrainingPipeline:
         
         self.training.get_base_model()
         self.training.train_valid_generator()
-        self.training.train(callback_list=self.callback_list)
+        self.training.train()
         
         logger.info(f">>>>>>>>>> stage {STAGE_NAME} completed <<<<<<<<<<<")
         
