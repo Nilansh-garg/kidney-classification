@@ -1,6 +1,8 @@
 from cnnClassifier.config.configurartion import ConfigurationManager
 from cnnClassifier.components.data_ingestion import DataIngestion
 from cnnClassifier import logger
+import os
+from pathlib import Path
 
 STAGE_NAME = "DATA INGESTION STAGE"
 
