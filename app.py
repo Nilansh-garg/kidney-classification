@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template
 import os
 from flask_cors import CORS, cross_origin
 from cnnClassifier.utils.common import decodeImage
-from cnnClassifier.pipeline.predict import predict_pipeline
+from cnnClassifier.pipeline.prediction import predict_pipeline
 
 os.putenv("LANG", "en_US.UTF-8")
 os.putenv("LC_ALL", "en_US.UTF-8")
@@ -81,4 +81,4 @@ def internal_error(error):
 if __name__ == "__main__":
     clApp = ClientApp()
     # For production, set debug=False
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
