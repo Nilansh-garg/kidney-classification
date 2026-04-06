@@ -53,7 +53,7 @@ class Training:
     def save_model(model:tf.keras.Model, path:Path)->None:
         model.save(path)
     
-    def train(self, callback_list:list):
+    def train(self):
         self.steps_per_epoch = self.train_generator.samples // self.train_generator.batch_size
         self.validation_steps = self.valid_generator.samples // self.valid_generator.batch_size
             
@@ -63,7 +63,6 @@ class Training:
             validation_data = self.valid_generator,
             steps_per_epoch = self.steps_per_epoch,
             validation_steps = self.validation_steps,
-            callbacks = callback_list
         )
             
         self.save_model(self.model, self.config.trained_model_path)

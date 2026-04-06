@@ -36,7 +36,16 @@ class TrainingConfig:
     params_is_augmentation:bool
     params_image_size: list
     
+from dataclasses import dataclass
+from  pathlib import Path
+
 @dataclass(frozen=True)
-class PrepareCallbacksConfig:
-    root_dir: Path
-    tensorboard_rot_log_dir:Path
+class EvaluationConfig:
+    path_of_model: Path
+    training_data: Path
+    all_params: dict
+    mlflow_uri: str
+    params_image_size: int
+    params_batch_size: list
+
+    

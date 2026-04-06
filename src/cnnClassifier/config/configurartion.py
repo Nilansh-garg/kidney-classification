@@ -1,6 +1,6 @@
 from cnnClassifier.constants import *
 from cnnClassifier.utils.common import read_yaml, create_directories
-from cnnClassifier.entity.config_entity import DataIngestionConfig
+from cnnClassifier.entity.config_entity import DataIngestionConfig, EvaluationConfig
 from cnnClassifier.entity.config_entity import PrepareBaseModelConfig
 from cnnClassifier.entity.config_entity import TrainingConfig
 import os
@@ -50,27 +50,11 @@ class ConfigurationManager:
         
         return prepare_base_model_config
         
-        
-    # def get_prepare_callback_config(self) -> PrepareCallbacksConfig:
-    #         config = self.config.prepare_callbacks
-    #         model_chkt_dir = os.path.dirname(config.checkpoint_model_filepath)
-    #         create_directories([
-    #             Path(model_chkt_dir),
-    #             Path(config.tensorboard_root_log_dir)
-    #         ])
-    #         prepare_callback_config = PrepareCallbacksConfig(
-    #             root_dir = Path(config.root_dir),
-    #             tensorboard_rot_log_dir= Path(config.tensorboard_root_log_dir),
-    #             checkpoint_model_filepath=Path(config.checkpoint_model_filepath)
-    #         )
-            
-    #         return prepare_callback_config
-        
     def get_training_config(self) -> TrainingConfig:
         training = self.config.training
         prepare_base_model = self.config.prepare_base_model
         params = self.params
-        training_data = os.path.join(self.config.data_ingestion.unzip_dir,"../data_ingestion")
+        training_data = self.config.data_ingestion.unzipped_data_training
         create_directories([
             Path(training.root_dir)
         ])
@@ -88,3 +72,14 @@ class ConfigurationManager:
             
         )
         return training_config
+    
+    def get_validation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data="artifacts/data_ingestion/kidney-ct-scans-image",
+            mlflow_uri = "https://dagshub.com/Nilansh-garg/kidney-classification.mlflow",
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE,
+        )
+        return eval_config
