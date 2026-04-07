@@ -2,7 +2,7 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL:  https://drive.google.com/file/d/1h_kzbmX6H0b5QyRougNY-Dll3xS07q73/view
+  source_URL:  https://drive.google.com/file/d/1sDIbpWAoGYhgiwsd3AMiMMrrRJTUDR11/view
   local_data_file: artifacts/data_ingestion/data.zip
   unzipped_data_dir: artifacts/data_ingestion
   unzipped_data_training: artifacts/data_ingestion/kidney-ct-scan-image
